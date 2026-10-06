@@ -1,0 +1,24 @@
+# Build output
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+
+# Local env / secrets
+.env
+*.env.local
+
+# Logs
+*.log
+
+# Personal notes (resume planning, not for the public repo)
+review.md
