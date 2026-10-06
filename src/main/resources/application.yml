@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: payledger
+  datasource:
+    url: jdbc:postgresql://localhost:5433/payledger   # docker compose maps the container to 5433
+    username: payledger
+    password: payledger
+  jpa:
+    hibernate:
+      ddl-auto: validate   # Flyway owns the schema; Hibernate only checks it matches
+    open-in-view: false    # no lazy DB queries while rendering the HTTP response
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always   # shows db + redis status; restrict once auth exists

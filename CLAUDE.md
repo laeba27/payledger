@@ -4,7 +4,7 @@ A small Amex-style card payment system: issue virtual cards, authorize, capture,
 with a double-entry ledger, idempotency and fraud rules. Built as a portfolio project.
 
 ## Stack
-- Java 21, Spring Boot, Maven
+- Java 21, Spring Boot 4.1 (modular starters, Testcontainers 2), Maven wrapper
 - PostgreSQL (source of truth) + Redis (cache, fraud counters), run via Docker Compose (OrbStack)
 - Flyway owns the schema; JPA uses `ddl-auto: validate`
 - Later slices: Redpanda (Kafka API), Prometheus/Grafana, k6, each behind a Compose profile
@@ -19,7 +19,7 @@ with a double-entry ledger, idempotency and fraud rules. Built as a portfolio pr
 - Unit tests are `*Test` (Surefire, no Docker); integration tests are `*IT` (Failsafe, Testcontainers).
 
 ## Commands
-- `docker compose up -d` start Postgres + Redis
+- `docker compose up -d` start Postgres (host port **5433**, since a local Postgres owns 5432) + Redis
 - `./mvnw test` unit tests
 - `./mvnw verify` unit + integration tests
 
